@@ -1,7 +1,7 @@
 (function($) {
   $.getScript("//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js", function(){
 
-      var tomatometer = '<b>Tomato-meter:</b>&nbsp;<span style="' +
+      var tomatometer = '<b>Tomatometer:</b>&nbsp;<span style="' +
             'display: inline-block; width: 55px; padding-bottom: 1px;' +
         '"><span style="' +
             'background: transparent url(\'http://images.rottentomatoescdn.com/images/redesign/icons-v2.png?v=20120910\') no-repeat -312px -160px;' +
