@@ -1,7 +1,6 @@
 {
   "name": "netflix-tomatometer",
   "version": "0.0.1",
-  "main": "Gruntfile.js",
   "dependencies": {
     "underscore": "~1.5.1",
     "almond": "~0.2.5"
