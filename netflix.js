@@ -1,4 +1,7 @@
 (function($) {
+
+  'use strict';
+
   $.getScript("//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js", function(){
 
       var tomatometer = _.template('<b>Tomatometer:</b>&nbsp;<span style="' +
@@ -12,7 +15,7 @@
         '<span style="' +
             'display: inline-block; width: 31px; text-align: center;' +
         '"><%= rating %>%</span></span>');
-      var fresh = '-256px -144px;'
+      var fresh = '-256px -144px;';
       var rotten = '-272px -144px';
 
       var currentTitle;
@@ -31,7 +34,7 @@
         var year = $movieContent.find('span.year').html();
         var $actors = $movieContent.find('a[href*="WiRoleDisplay"]');
         var actors = [];
-        _.each($actors, function(e){actors.push($(e).html())});
+        _.each($actors, function(e){actors.push($(e).html());});
 
         $.ajax({
           url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=84vwsh3zsrqkv6atthsuq66a&q=" + title,
@@ -64,7 +67,7 @@
     //Lets see if the dates match exactly on either side of the boundary
     //Dates may be in the format 2005-2009 so we check both boundaries
     _.each(year.split('-'), function(e){
-      var temp = _.where(movies, {'year': parseInt(e)});
+      var temp = _.where(movies, {'year': parseInt(e, 10)});
 
       if (temp.length < narrowed.length && temp.length > 0) {
         narrowed = temp;
