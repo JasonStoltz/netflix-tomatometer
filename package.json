@@ -1,0 +1,21 @@
+{
+  "name": "netflix-tomatometer",
+  "version": "0.0.1",
+  "description": "A script to add rotten tomatoes tomato meter to netflix",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JasonStoltz/netflix-tomatometer.git"
+  },
+  "author": "Jason Stoltzfus",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/JasonStoltz/netflix-tomatometer/issues"
+  },
+  "dependencies": {
+    "bookmarklet": "0.0.2"
+  }
+}
