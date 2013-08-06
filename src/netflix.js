@@ -1,8 +1,8 @@
-(function($) {
+(function($, console, _) {
 
   'use strict';
 
-  $.getScript("//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js", function(){
+  $.getScript("//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js", function(_){
 
       var tomatometer = _.template('<b>Tomatometer:</b>&nbsp;<span style="' +
             'display: inline-block; width: 55px; padding-bottom: 1px;' +
@@ -25,7 +25,7 @@
         var $movieContent = $('#BobMovie-content');
         var title = $movieContent.find('span.title').html();
 
-        if (title == currentTitle) {
+        if (title === currentTitle) {
           return;
         }
 
@@ -56,8 +56,8 @@
 
 
 
-  function locateMovie(movies, year, title, actors) {
-    if (movies.length == 1) {
+  function locateMovie(movies, year, title) {
+    if (movies.length === 1) {
       console.log('One movie, shortcircuiting');
       return movies[0];
     }
@@ -74,7 +74,7 @@
       }
     });              
     
-    if (narrowed.length == 1) {
+    if (narrowed.length === 1) {
       console.log('Exact match on year out of an original ' + movies.length);
       return narrowed[0];
     }
@@ -84,7 +84,7 @@
     if (temp.length < narrowed.length && temp.length > 0) {
       narrowed = temp;
     }
-    if (narrowed.length == 1) {
+    if (narrowed.length === 1) {
       console.log('Exact match on title out of an original ' + movies.length);
       return narrowed[0];
     }
@@ -94,4 +94,6 @@
   }
 
   
-})(jQuery);
+})(window.jQuery,
+        window.console || {log:function(){}},
+        window._);
