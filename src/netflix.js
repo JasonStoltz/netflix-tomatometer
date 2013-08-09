@@ -1,5 +1,8 @@
-(function($) {
-  $.getScript("//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js", function(){
+(function($, console, _) {
+
+  'use strict';
+
+  $.getScript("//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js", function(_){
 
       var tomatometer = _.template('<b>Tomatometer:</b>&nbsp;<span style="' +
             'display: inline-block; width: 55px; padding-bottom: 1px;' +
@@ -12,7 +15,7 @@
         '<span style="' +
             'display: inline-block; width: 31px; text-align: center;' +
         '"><%= rating %>%</span></span>');
-      var fresh = '-256px -144px;'
+      var fresh = '-256px -144px;';
       var rotten = '-272px -144px';
 
       var currentTitle;
@@ -22,7 +25,7 @@
         var $movieContent = $('#BobMovie-content');
         var title = $movieContent.find('span.title').html();
 
-        if (title == currentTitle) {
+        if (title === currentTitle) {
           return;
         }
 
@@ -31,7 +34,7 @@
         var year = $movieContent.find('span.year').html();
         var $actors = $movieContent.find('a[href*="WiRoleDisplay"]');
         var actors = [];
-        _.each($actors, function(e){actors.push($(e).html())});
+        _.each($actors, function(e){actors.push($(e).html());});
 
         $.ajax({
           url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=84vwsh3zsrqkv6atthsuq66a&q=" + title,
@@ -53,8 +56,8 @@
 
 
 
-  function locateMovie(movies, year, title, actors) {
-    if (movies.length == 1) {
+  function locateMovie(movies, year, title) {
+    if (movies.length === 1) {
       console.log('One movie, shortcircuiting');
       return movies[0];
     }
@@ -64,14 +67,14 @@
     //Lets see if the dates match exactly on either side of the boundary
     //Dates may be in the format 2005-2009 so we check both boundaries
     _.each(year.split('-'), function(e){
-      var temp = _.where(movies, {'year': parseInt(e)});
+      var temp = _.where(movies, {'year': parseInt(e, 10)});
 
       if (temp.length < narrowed.length && temp.length > 0) {
         narrowed = temp;
       }
     });              
     
-    if (narrowed.length == 1) {
+    if (narrowed.length === 1) {
       console.log('Exact match on year out of an original ' + movies.length);
       return narrowed[0];
     }
@@ -81,7 +84,7 @@
     if (temp.length < narrowed.length && temp.length > 0) {
       narrowed = temp;
     }
-    if (narrowed.length == 1) {
+    if (narrowed.length === 1) {
       console.log('Exact match on title out of an original ' + movies.length);
       return narrowed[0];
     }
@@ -91,4 +94,6 @@
   }
 
   
-})(jQuery);
+})(window.jQuery,
+        window.console || {log:function(){}},
+        window._);
