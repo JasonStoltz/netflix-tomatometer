@@ -1,0 +1,16 @@
+{
+  "name": "netflix-tomatometer",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.5.1",
+    "almond": "~0.2.5"
+  }
+}
